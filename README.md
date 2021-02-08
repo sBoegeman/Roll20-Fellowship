@@ -9,6 +9,8 @@ To-do:
     Add new section for Words of Power.
     Add support for The Pair and The Trio.
       This should include their individual names, which are incorporated into their roll macros.
+    Review playbooks in Book 4 (Generiosity), and add what is currently not supported.
+    Add an optional Fellowship Moves section, and convinient ways to track community Fellowships. 
   Improve Overlord sheet.
     Revise the Generals section. New sections are needed, and it should be compatable with the Empire's Leaders. Should include the following:
       Name

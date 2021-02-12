@@ -398,6 +398,7 @@ input[disabled] {-moz-appearance: textfield}
 
 .sheet-section-bondsbox,
 .sheet-section-companionbox,
+.sheet-section-forbiddenelementbox,
 .sheet-section-statbox,
 .sheet-section-gearbox,
 .sheet-section-othergearbox,
@@ -567,6 +568,7 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hideCurse:checked ~ .sheet-section-curse,
 .sheet-hidePowerWords:checked ~ .sheet-section-powerwords,
 .sheet-hideAnimalTraits:checked ~ .sheet-section-animaltraits,
+.sheet-hideForbiddenElement:checked ~ .sheet-section-forbiddenelement,
 .sheet-hideOtherGear:checked ~ .sheet-section-othergear,
 .sheet-hideSpells:checked ~ .sheet-section-spells,
 .sheet-hideCrew:checked ~ .sheet-section-crew,
@@ -673,6 +675,7 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hideWeakness:not(:checked) ~ .sheet-section-weakness,
 .sheet-hideGear:not(:checked) ~ .sheet-section-gear,
 .sheet-hideAnimalTraits:not(:checked) ~ .sheet-section-animaltraits,
+.sheet-hideForbiddenElement:not(:checked) ~ .sheet-section-forbiddenelement,
 .sheet-hidePowerWords:not(:checked) ~ .sheet-section-powerwords,
 .sheet-hideCurse:not(:checked) ~ .sheet-section-curse,
 .sheet-hideOtherGear:not(:checked) ~ .sheet-section-othergear,

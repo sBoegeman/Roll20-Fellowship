@@ -5,8 +5,6 @@ This sheet is still under development. It currently supports most options used b
 
 To-do:
   Add new options for the Fellowship playbook.
-    Fix the Forbidden Element and Elemntal Master section for The Exile.
-    Add new section for Words of Power.
     Add support for The Pair and The Trio.
       This should include their individual names, which are incorporated into their roll macros.
     Review playbooks in Book 4 (Generiosity), and add what is currently not supported.

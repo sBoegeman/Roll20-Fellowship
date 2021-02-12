@@ -146,17 +146,18 @@ on("sheet:opened", function(eventInfo){
                 <div class="sheet-section-name">Display Forbidden Element</div>
                 <input type="checkbox" class="sheet-hasForbiddenElement" name="attr_hasForbiddenElement" value="1">
             </div>
-            <!--
+            
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Hide Companion Section</div>
                 <input type="checkbox" class="sheet-hideCompanionSection" name="attr_hideCompanionSection" value="1">
             </div>
-            -->
-            <!--
+            
+            
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display Elemental Master (Exile)</div>
                 <input type="checkbox" class="sheet-hasElementalMaster" name="attr_hasElementalMaster" value="1">
             </div>
+            <!--
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display Archmage's Extra Spell Use (Enlightened)</div>
                 <input type="checkbox" class="sheet-hasArchmage" name="attr_hasArchmage" value="1">
@@ -581,7 +582,7 @@ on("sheet:opened", function(eventInfo){
             </div>
         </div>
 
-        <!-- YOUR FORBIDDEN ELEMENT(S) -->
+        <!-- YOUR FORBIDDEN ELEMENT(S) (old, moving it to Animal Traits style section in the left col. Leaving this while the new section is tested) 
         <input type="checkbox" class="sheet-hasForbiddenElement" name="attr_hasForbiddenElement" value="1" style="display:none">
         <div class="sheet-header sheet-forbiddenElement">
             <label class="sheet-top" for="attr_forbiddenElement">Element</label>
@@ -609,7 +610,7 @@ on("sheet:opened", function(eventInfo){
                     <input type="text" name="attr_elementTag2" placeholder="Element Tag">
                 </label>
             </div>
-        </div>
+        </div>-->
 
         <!-- ANGELIC PRIDE -->
         <input type="checkbox" class="sheet-hasPride" name="attr_hasPride" value="1" style="display:none">
@@ -1172,6 +1173,32 @@ on("sheet:opened", function(eventInfo){
             </div> 
         </div>
 
+        <!-- ===== FORBIDDEN ELEMENT (optional) ===== -->
+        <input type="checkbox" class="sheet-hasForbiddenElement" name="attr_hasForbiddenElement" value="1" style="display:none">
+        <div class="sheet-forbiddenElement">
+            <div class="sheet-header">
+                <div class="sheet-section-name">Your Forbidden Element</div>
+                <input type="checkbox" class="sheet-hideForbiddenElement" name="attr_hideForbiddenElement" value="1">
+            </div>
+            <input type="checkbox" class="sheet-hideForbiddenElement" name="attr_hideForbiddenelement" value="1" style="display:none">
+            <div class="sheet-section-forbiddenelement">
+                <div class="sheet-section-forbiddenelementbox">
+                    <input name="attr_forbiddenelement-1" type="text" placeholder="Your Forbidden Element">
+                    <input type="checkbox" class="sheet-hasElementalMaster" name="attr_hasElementalMaster" value="1" style="display:none">
+                    <div class="sheet-elementalMaster">
+                        <input name="attr_forbiddenelement-1-traits" type="text" placeholder="Your Forbidden Element's Tags">
+                    </div>
+                </div>
+                <input type="checkbox" class="sheet-hasElementalMaster" name="attr_hasElementalMaster" value="1" style="display:none">
+                <div class="sheet-elementalMaster">
+                    <div class="sheet-section-forbiddenelementbox">
+                        <input name="attr_forbiddenelement-2" type="text" placeholder="Your Second Forbidden Element">
+                        <input name="attr_forbiddenelement-2-traits" type="text" placeholder="Your Second Forbidden Element's Tags">
+                    </div>
+                </div>
+            </div> 
+        </div>
+
         <!-- ===== WORDS OF POWER (optional) ===== -->
         <input type="checkbox" class="sheet-hasPowerWords" name="attr_hasPowerWords" value="1" style="display:none">
         <div class="sheet-powerwords">
@@ -1698,10 +1725,10 @@ on("sheet:opened", function(eventInfo){
                 <div class="sheet-section-plansbox">
                     <select class="sheet-planPhase" name="attr_planPhase" value="1">
                         <option value="phase" style="display: none">Phase</option>
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="4">4</option>
                     </select>
                     <input type="text" name="attr_planname" placeholder="Master Plan Name">
                     <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_plan-show" value="1" />

@@ -75,6 +75,10 @@ on("sheet:opened", function(eventInfo){
                 <input type="checkbox" class="sheet-hasCrew" name="attr_hasCrew" value="1">
             </div>
             <div class="sheet-options-header">
+                <div class="sheet-section-name">Display Maps</div>
+                <input type="checkbox" class="sheet-hasMaps" name="attr_hasMaps" value="1">
+            </div>
+            <div class="sheet-options-header">
                 <div class="sheet-section-name">Display a Second People Move</div>
                 <input type="checkbox" class="sheet-hasSecondPeople" name="attr_hasSecondPeople" value="1">
             </div>
@@ -146,15 +150,8 @@ on("sheet:opened", function(eventInfo){
                 <div class="sheet-section-name">Display Forbidden Element</div>
                 <input type="checkbox" class="sheet-hasForbiddenElement" name="attr_hasForbiddenElement" value="1">
             </div>
-            
             <div class="sheet-options-header">
-                <div class="sheet-section-name">Hide Companion Section</div>
-                <input type="checkbox" class="sheet-hideCompanionSection" name="attr_hideCompanionSection" value="1">
-            </div>
-            
-            
-            <div class="sheet-options-header">
-                <div class="sheet-section-name">Display Elemental Master (Exile)</div>
+                <div class="sheet-section-name">Display Elemental Master</div>
                 <input type="checkbox" class="sheet-hasElementalMaster" name="attr_hasElementalMaster" value="1">
             </div>
             <!--
@@ -163,6 +160,10 @@ on("sheet:opened", function(eventInfo){
                 <input type="checkbox" class="sheet-hasArchmage" name="attr_hasArchmage" value="1">
             </div>
             -->
+            <div class="sheet-options-header">
+                <div class="sheet-section-name">Hide Companion Section</div>
+                <input type="checkbox" class="sheet-hideCompanionSection" name="attr_hideCompanionSection" value="1">
+            </div>
             <br> <br> <br>
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display Pair (WIP)</div>
@@ -477,9 +478,9 @@ on("sheet:opened", function(eventInfo){
 
             <div class="sheet-row-1">
                 <div class="sheet-fluidnumber-box">
-                    <input type="number" name="attr_rain_max">
+                    <input type="number" name="attr_rain_current">
                     <span class="sheet-slash">/</span>	
-                    <input type="number" name="attr_rain_current" placeholder="MAX">
+                    <input type="number" name="attr_rain_max" placeholder="MAX">
                 </div>
             </div>
         </div>
@@ -492,9 +493,9 @@ on("sheet:opened", function(eventInfo){
 
             <div class="sheet-row-1">
                 <div class="sheet-fluidnumber-box">
-                    <input type="number" name="attr_crew_max">
+                    <input type="number" name="attr_crew_current">
                     <span class="sheet-slash">/</span>	
-                    <input type="number" name="attr_crew_current" placeholder="MAX">
+                    <input type="number" name="attr_crew_max" placeholder="MAX">
                 </div>
             </div>
         </div>
@@ -540,6 +541,21 @@ on("sheet:opened", function(eventInfo){
                     <input type="number" name="attr_fandom_current">
                     <span class="sheet-slash">/</span>	
                     <input type="number" name="attr_fandom_max" placeholder="3">
+                </div>
+            </div>
+        </div>
+
+        <!-- MAPS -->
+
+        <input type="checkbox" class="sheet-hasMaps" name="attr_hasMaps" value="1" style="display:none">
+        <div class="sheet-header sheet-maps">
+            <label class="sheet-top" for="attr_maps">Maps</label>
+
+            <div class="sheet-row-1">
+                <div class="sheet-fluidnumber-box">
+                    <input type="number" name="attr_maps_current">
+                    <span class="sheet-slash">/</span>	
+                    <input type="number" name="attr_maps_max" placeholder="2">
                 </div>
             </div>
         </div>
@@ -1752,9 +1768,49 @@ on("sheet:opened", function(eventInfo){
                 <div class="sheet-section-generalsbox">
                     <input type="text" name="attr_generalsname" placeholder="Your General's Name">
                     <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_general-show" value="1" />
-                    <div class="sheet-hide sheet-auto-expand">
-                        <span name="attr_generalbody"></span>
-                        <textarea name="attr_generalbody" placeholder="Information about this general"></textarea>
+                    <div class="sheet-hide sheet-general">
+                        <span>Number of stats: </span>
+                        <select class="sheet-generalStatAmount" name="attr_generalStatAmount" value="2">
+                            <option value="# of stats" style="display:none" selected># of Stats</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <div class="sheet-section-generalstats">
+                            <input type="hidden" class="sheet-generalStatAmount" name="attr_generalStatAmount">
+                            <div class="sheet-section-generalstat1" >
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat1-damaged" value="1" />
+                                <input name="attr_generalstat1" type="text" placeholder="Stat 1">
+                            </div>
+                            <input type="hidden" class="sheet-generalStatAmount" name="attr_generalStatAmount">
+                            <div class="sheet-section-generalstat2">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat2-damaged" value="1" />
+                                <input name="attr_generalstat2" type="text" placeholder="Stat 2">
+                            </div>
+                            <div class="sheet-section-generalstat3">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat3-damaged" value="1" />
+                                <input name="attr_generalstat3" type="text" placeholder="Stat 3">
+                            </div>
+                            <div class="sheet-section-generalstat4">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat4-damaged" value="1" />
+                                <input name="attr_generalstat4" type="text" placeholder="Stat 4">
+                            </div>
+                            <div class="sheet-section-generalstat5">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat5-damaged" value="1" />
+                                <input name="attr_generalstat5" type="text" placeholder="stat 5">
+                            </div>
+                            <div class="sheet-clearfix"></div>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_generaltraitbody"></span>
+                            <textarea name="attr_generaltraitbody" placeholder="The General's Traits"></textarea>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_generalbody"></span>
+                            <textarea name="attr_generalbody" placeholder="Information about this general"></textarea>
+                        </div>
                     </div>
                 </div>
             </fieldset>

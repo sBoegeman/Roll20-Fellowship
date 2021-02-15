@@ -386,7 +386,7 @@ input[disabled] {-moz-appearance: textfield}
 }
 
 .sheet-section-cuts input[name="attr_cutname"]{
-	width: 97%
+	width: 96%
 }
 
 .sheet-section-spells input[name="attr_spellname"],
@@ -438,8 +438,16 @@ input[disabled] {-moz-appearance: textfield}
 .sheet-section-animaltraits input[name="attr_animaltraits-name-1"],
 .sheet-section-animaltraits input[name="attr_animaltraits-name-2"],
 .sheet-section-animaltraits input[name="attr_animaltraits-name-3"],
-.sheet-section-animaltraits input[name="attr_animaltraits-name-4"] {
+.sheet-section-animaltraits input[name="attr_animaltraits-name-4"]{
     width: 94%;
+}
+
+.sheet-section-generalstats input[name="attr_generalstat1"],
+.sheet-section-generalstats input[name="attr_generalstat2"],
+.sheet-section-generalstats input[name="attr_generalstat3"],
+.sheet-section-generalstats input[name="attr_generalstat4"],
+.sheet-section-generalstats input[name="attr_generalstat5"] {
+    width: 96%;
 }
 
 .sheet-section-bonds input[name="attr_bond1"],
@@ -577,6 +585,16 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hideYourRebellion:checked ~ .sheet-section-yourrebellion,
 .sheet-hidePlans:checked ~ .sheet-section-plans,
 .sheet-hideGenerals:checked ~ .sheet-section-generals,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat5,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat5,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat5,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat5,
 .sheet-hideMoves:checked ~ .sheet-section-moves,
 .sheet-hideAdvancement:checked ~ .sheet-section-advancement,
 .sheet-hideNotes:checked ~ .sheet-section-notes {
@@ -654,7 +672,6 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-bondAmount[value="5"] ~ .sheet-section-bond3,
 .sheet-bondAmount[value="5"] ~ .sheet-section-bond4,
 .sheet-bondAmount[value="5"] ~ .sheet-section-bond5,
-
 .sheet-hideCompanions:not(:checked) ~ .sheet-section-companions,
 .sheet-companionStatAmount[value="1"] ~ .sheet-section-companionstat1,
 .sheet-companionStatAmount[value="2"] ~ .sheet-section-companionstat1,
@@ -671,7 +688,6 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-companionStatAmount[value="5"] ~ .sheet-section-companionstat3,
 .sheet-companionStatAmount[value="5"] ~ .sheet-section-companionstat4,
 .sheet-companionStatAmount[value="5"] ~ .sheet-section-companionstat5,
-
 .sheet-hideWeakness:not(:checked) ~ .sheet-section-weakness,
 .sheet-hideGear:not(:checked) ~ .sheet-section-gear,
 .sheet-hideAnimalTraits:not(:checked) ~ .sheet-section-animaltraits,
@@ -686,6 +702,21 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hideYourRebellion:not(:checked) ~ .sheet-section-yourrebellion,
 .sheet-hidePlans:not(:checked) ~ .sheet-section-plans,
 .sheet-hideGenerals:not(:checked) ~ .sheet-section-generals,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat5,
 .sheet-hideMoves:not(:checked) ~ .sheet-section-moves,
 .sheet-hideAdvancement:not(:checked) ~ .sheet-section-advancement,
 .sheet-hideNotes:not(:checked) ~ .sheet-section-notes  {

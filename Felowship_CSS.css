@@ -373,7 +373,8 @@ input[disabled] {-moz-appearance: textfield}
 }
 
 .sheet-section-moves input[name="attr_movename"],
-.sheet-section-generals input[name="attr_generalsname"],
+.sheet-section-leaders input[name="attr_leadersname"],
+.sheet-section-sourceofpower input[name="attr_sourceofpowername"],
 .sheet-section-people input[name="attr_people_name"],
 .sheet-section-people input[name="attr_people_name2"],
 .sheet-section-yourship input[name="attr_yourship_type"],
@@ -385,8 +386,15 @@ input[disabled] {-moz-appearance: textfield}
 	width:86%;
 }
 
-.sheet-section-cuts input[name="attr_cutname"]{
-	width: 97%
+.sheet-section-locals input[name="attr_localtype"] {
+	width:84%
+}
+
+
+.sheet-section-cuts input[name="attr_cutname"],
+.sheet-section-generals input[name="attr_generalsname"],
+.sheet-section-boss input[name="attr_bossname"]{
+	width: 96%
 }
 
 .sheet-section-spells input[name="attr_spellname"],
@@ -394,6 +402,20 @@ input[disabled] {-moz-appearance: textfield}
 .sheet-section-notes input[name="attr_note-title"],
 .sheet-section-notes textarea[name="attr_note-body"] {
 	width: 97%;
+}
+
+.sheet-section-responselevel input[name="attr_responselevel0"],
+.sheet-section-responselevel input[name="attr_responselevel1"],
+.sheet-section-responselevel input[name="attr_responselevel2"],
+.sheet-section-responselevel input[name="attr_responselevel3"],
+.sheet-section-responselevel input[name="attr_responselevel4"],
+.sheet-section-responselevel input[name="attr_responselevel5"],
+.sheet-section-responselevel input[name="attr_responselevel6"],
+.sheet-section-responselevel input[name="attr_responselevel7"],
+.sheet-section-responselevel input[name="attr_responselevel8"],
+.sheet-section-responselevel input[name="attr_responselevel9"],
+.sheet-section-responselevel input[name="attr_responselevel10"] {
+	width: 92%;
 }
 
 .sheet-section-bondsbox,
@@ -406,6 +428,8 @@ input[disabled] {-moz-appearance: textfield}
 .sheet-section-cutsbox,
 .sheet-section-plansbox,
 .sheet-section-generalsbox,
+.sheet-section-leadersbox,
+.sheet-section-sourceofpowerbox,
 .sheet-section-peopleItemBox {
     width: 94%;
     background-color: #DDD;
@@ -425,6 +449,14 @@ input[disabled] {-moz-appearance: textfield}
     width: 84%;
 }
 
+
+.sheet-section-statbox input[name="attr_stat-name-1"],
+.sheet-section-statbox input[name="attr_stat-name-2"],
+.sheet-section-statbox input[name="attr_stat-name-3"],
+.sheet-section-statbox input[name="attr_stat-name-4"] {
+    width: 82%;
+}
+
 .sheet-section-companions input[name="attr_companionstat1"],
 .sheet-section-companions input[name="attr_companionstat2"],
 .sheet-section-companions input[name="attr_companionstat3"],
@@ -435,11 +467,34 @@ input[disabled] {-moz-appearance: textfield}
 .sheet-section-stats input[name="attr_stat3"],
 .sheet-section-stats input[name="attr_stat4"],
 .sheet-section-stats input[name="attr_stat5"],
+.sheet-section-locals input[name="attr_stat1"],
+.sheet-section-locals input[name="attr_stat2"],
+.sheet-section-locals input[name="attr_stat3"],
+.sheet-section-locals input[name="attr_stat4"],
+.sheet-section-locals input[name="attr_stat5"],
 .sheet-section-animaltraits input[name="attr_animaltraits-name-1"],
 .sheet-section-animaltraits input[name="attr_animaltraits-name-2"],
 .sheet-section-animaltraits input[name="attr_animaltraits-name-3"],
-.sheet-section-animaltraits input[name="attr_animaltraits-name-4"] {
+.sheet-section-animaltraits input[name="attr_animaltraits-name-4"]{
     width: 94%;
+}
+
+.sheet-section-generalstats input[name="attr_generalstat1"],
+.sheet-section-generalstats input[name="attr_generalstat2"],
+.sheet-section-generalstats input[name="attr_generalstat3"],
+.sheet-section-generalstats input[name="attr_generalstat4"],
+.sheet-section-generalstats input[name="attr_generalstat5"],
+.sheet-section-bossstats input[name="attr_bossstat1"],
+.sheet-section-bossstats input[name="attr_bossstat2"],
+.sheet-section-bossstats input[name="attr_bossstat3"],
+.sheet-section-bossstats input[name="attr_bossstat4"],
+.sheet-section-bossstats input[name="attr_bossstat5"],
+.sheet-section-leaderstats input[name="attr_leaderstat1"],
+.sheet-section-leaderstats input[name="attr_leaderstat2"],
+.sheet-section-leaderstats input[name="attr_leaderstat3"],
+.sheet-section-leaderstats input[name="attr_leaderstat4"],
+.sheet-section-leaderstats input[name="attr_leaderstat5"] {
+    width: 96%;
 }
 
 .sheet-section-bonds input[name="attr_bond1"],
@@ -487,7 +542,9 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-sheetType:not([value="threats"]) ~ .sheet-threats,
 .sheet-sheetType:not([value="ship"]) ~ .sheet-ship,
 .sheet-sheetType:not([value="overlord"]) ~ .sheet-overlord,
+.sheet-sheetType:not([value="empire"]) ~ .sheet-empire,
 .sheet-sheetType:not([value="rebellion"]) ~ .sheet-rebellion,
+.sheet-sheetType:not([value="location"]) ~ .sheet-location,
 .sheet-hasOptionalPeopleTitle:not(:checked) ~ .sheet-optionalPeopleTitle,
 .sheet-hasOptionalPeopleTitle:checked ~ .sheet-defaultPeopleTitle, 
 .sheet-hasIron:not(:checked) ~ .sheet-iron,
@@ -502,6 +559,7 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hasSpeed:not(:checked) ~ .sheet-speed,
 .sheet-hasPower:not(:checked) ~ .sheet-power,
 .sheet-hasFandom:not(:checked) ~ .sheet-fandom,
+.sheet-hasMaps:not(:checked) ~ .sheet-maps,
 .sheet-hasAscended:not(:checked) ~ .sheet-ascended,
 .sheet-hasTarget:not(:checked) ~ .sheet-target,
 .sheet-hasForgottenLandsTrait:not(:checked) ~ .sheet-forgottenLandsTrait,
@@ -527,6 +585,8 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hasTrioWebs:not(:checked) ~ .sheet-trio-webs,
 .sheet-hasTrioRain:not(:checked) ~ .sheet-trio-rain,
 .sheet-hasWarmonger:not(:checked) ~ .sheet-warmonger,
+.sheet-hasDiversifiedHorde1:not(:checked) ~ .sheet-diversifiedHorde1,
+.sheet-hasDiversifiedHorde2:not(:checked) ~ .sheet-diversifiedHorde2,
 .sheet-hidePeople:checked ~ .sheet-section-people,
 .sheet-hideArmy:checked ~ .sheet-section-army,
 .sheet-hideLook:checked ~ .sheet-section-look,
@@ -577,6 +637,41 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hideYourRebellion:checked ~ .sheet-section-yourrebellion,
 .sheet-hidePlans:checked ~ .sheet-section-plans,
 .sheet-hideGenerals:checked ~ .sheet-section-generals,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat5,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat5,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat5,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat5,
+.sheet-hideBoss:checked ~ .sheet-section-boss,
+.sheet-bossStatAmount[value="1"] ~ .sheet-section-bossstat2,
+.sheet-bossStatAmount[value="1"] ~ .sheet-section-bossstat3,
+.sheet-bossStatAmount[value="1"] ~ .sheet-section-bossstat4,
+.sheet-bossStatAmount[value="1"] ~ .sheet-section-bossstat5,
+.sheet-bossStatAmount[value="2"] ~ .sheet-section-bossstat3,
+.sheet-bossStatAmount[value="2"] ~ .sheet-section-bossstat4,
+.sheet-bossStatAmount[value="2"] ~ .sheet-section-bossstat5,
+.sheet-bossStatAmount[value="3"] ~ .sheet-section-bossstat4,
+.sheet-bossStatAmount[value="3"] ~ .sheet-section-bossstat5,
+.sheet-bossStatAmount[value="4"] ~ .sheet-section-bossstat5,
+.sheet-hideLocals:checked ~ .sheet-section-locals,
+.sheet-hideLeaders:checked ~ .sheet-section-leaders,
+.sheet-leaderStatAmount[value="1"] ~ .sheet-section-leaderstat2,
+.sheet-leaderStatAmount[value="1"] ~ .sheet-section-leaderstat3,
+.sheet-leaderStatAmount[value="1"] ~ .sheet-section-leaderstat4,
+.sheet-leaderStatAmount[value="1"] ~ .sheet-section-leaderstat5,
+.sheet-leaderStatAmount[value="2"] ~ .sheet-section-leaderstat3,
+.sheet-leaderStatAmount[value="2"] ~ .sheet-section-leaderstat4,
+.sheet-leaderStatAmount[value="2"] ~ .sheet-section-leaderstat5,
+.sheet-leaderStatAmount[value="3"] ~ .sheet-section-leaderstat4,
+.sheet-leaderStatAmount[value="3"] ~ .sheet-section-leaderstat5,
+.sheet-leaderStatAmount[value="4"] ~ .sheet-section-leaderstat5,
+.sheet-hideSourceOfPower:checked ~ .sheet-section-sourceofpower,
+.sheet-hideResponse:checked ~ .sheet-section-responselevel,
 .sheet-hideMoves:checked ~ .sheet-section-moves,
 .sheet-hideAdvancement:checked ~ .sheet-section-advancement,
 .sheet-hideNotes:checked ~ .sheet-section-notes {
@@ -610,6 +705,7 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hasSpeed:checked ~ .sheet-speed,
 .sheet-hasPower:checked ~ .sheet-power,
 .sheet-hasFandom:checked ~ .sheet-fandom,
+.sheet-hasMaps:checked ~ .sheet-maps,
 .sheet-hasAscended:checked ~ .sheet-ascended,
 .sheet-hasTarget:checked ~ .sheet-target,
 .sheet-hasCuts:checked ~ .sheet-cuts,
@@ -635,6 +731,8 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hasTrioWebs:checked ~ .sheet-trio-webs,
 .sheet-hasTrioRain:checked ~ .sheet-trio-rain,
 .sheet-hasWarmonger:checked ~ .sheet-warmonger,
+.sheet-hasDiversifiedHorde1:checked ~ .sheet-diversifiedHorde1,
+.sheet-hasDiversifiedHorde2:checked ~ .sheet-diversifiedHorde2,
 .sheet-hidePeople:not(:checked) ~ .sheet-section-people,
 .sheet-hideArmy:not(:checked) ~ .sheet-section-army,
 .sheet-hideLook:not(:checked) ~ .sheet-section-look,
@@ -654,7 +752,6 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-bondAmount[value="5"] ~ .sheet-section-bond3,
 .sheet-bondAmount[value="5"] ~ .sheet-section-bond4,
 .sheet-bondAmount[value="5"] ~ .sheet-section-bond5,
-
 .sheet-hideCompanions:not(:checked) ~ .sheet-section-companions,
 .sheet-companionStatAmount[value="1"] ~ .sheet-section-companionstat1,
 .sheet-companionStatAmount[value="2"] ~ .sheet-section-companionstat1,
@@ -671,7 +768,6 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-companionStatAmount[value="5"] ~ .sheet-section-companionstat3,
 .sheet-companionStatAmount[value="5"] ~ .sheet-section-companionstat4,
 .sheet-companionStatAmount[value="5"] ~ .sheet-section-companionstat5,
-
 .sheet-hideWeakness:not(:checked) ~ .sheet-section-weakness,
 .sheet-hideGear:not(:checked) ~ .sheet-section-gear,
 .sheet-hideAnimalTraits:not(:checked) ~ .sheet-section-animaltraits,
@@ -686,6 +782,56 @@ button[type=roll].sheet-yourrebellion-chat-button::before {
 .sheet-hideYourRebellion:not(:checked) ~ .sheet-section-yourrebellion,
 .sheet-hidePlans:not(:checked) ~ .sheet-section-plans,
 .sheet-hideGenerals:not(:checked) ~ .sheet-section-generals,
+.sheet-generalStatAmount[value="1"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="2"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="3"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="4"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat1,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat2,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat3,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat4,
+.sheet-generalStatAmount[value="5"] ~ .sheet-section-generalstat5,
+.sheet-hideBoss:not(:checked) ~ .sheet-section-boss,
+.sheet-bossStatAmount[value="1"] ~ .sheet-section-bossstat1,
+.sheet-bossStatAmount[value="2"] ~ .sheet-section-bossstat1,
+.sheet-bossStatAmount[value="2"] ~ .sheet-section-bossstat2,
+.sheet-bossStatAmount[value="3"] ~ .sheet-section-bossstat1,
+.sheet-bossStatAmount[value="3"] ~ .sheet-section-bossstat2,
+.sheet-bossStatAmount[value="3"] ~ .sheet-section-bossstat3,
+.sheet-bossStatAmount[value="4"] ~ .sheet-section-bossstat1,
+.sheet-bossStatAmount[value="4"] ~ .sheet-section-bossstat2,
+.sheet-bossStatAmount[value="4"] ~ .sheet-section-bossstat3,
+.sheet-bossStatAmount[value="4"] ~ .sheet-section-bossstat4,
+.sheet-bossStatAmount[value="5"] ~ .sheet-section-bossstat1,
+.sheet-bossStatAmount[value="5"] ~ .sheet-section-bossstat2,
+.sheet-bossStatAmount[value="5"] ~ .sheet-section-bossstat3,
+.sheet-bossStatAmount[value="5"] ~ .sheet-section-bossstat4,
+.sheet-bossStatAmount[value="5"] ~ .sheet-section-bossstat5,
+.sheet-hideLocals:not(:checked) ~ .sheet-section-locals,
+.sheet-hideLeaders:not(:checked) ~ .sheet-section-leaders,
+.sheet-leaderStatAmount[value="1"] ~ .sheet-section-leaderstat1,
+.sheet-leaderStatAmount[value="2"] ~ .sheet-section-leaderstat1,
+.sheet-leaderStatAmount[value="2"] ~ .sheet-section-leaderstat2,
+.sheet-leaderStatAmount[value="3"] ~ .sheet-section-leaderstat1,
+.sheet-leaderStatAmount[value="3"] ~ .sheet-section-leaderstat2,
+.sheet-leaderStatAmount[value="3"] ~ .sheet-section-leaderstat3,
+.sheet-leaderStatAmount[value="4"] ~ .sheet-section-leaderstat1,
+.sheet-leaderStatAmount[value="4"] ~ .sheet-section-leaderstat2,
+.sheet-leaderStatAmount[value="4"] ~ .sheet-section-leaderstat3,
+.sheet-leaderStatAmount[value="4"] ~ .sheet-section-leaderstat4,
+.sheet-leaderStatAmount[value="5"] ~ .sheet-section-leaderstat1,
+.sheet-leaderStatAmount[value="5"] ~ .sheet-section-leaderstat2,
+.sheet-leaderStatAmount[value="5"] ~ .sheet-section-leaderstat3,
+.sheet-leaderStatAmount[value="5"] ~ .sheet-section-leaderstat4,
+.sheet-leaderStatAmount[value="5"] ~ .sheet-section-leaderstat5,
+.sheet-hideSourceOfPower:not(:checked) ~ .sheet-section-sourceofpower,
+.sheet-hideResponse:not(:checked) ~ .sheet-section-responselevel,
 .sheet-hideMoves:not(:checked) ~ .sheet-section-moves,
 .sheet-hideAdvancement:not(:checked) ~ .sheet-section-advancement,
 .sheet-hideNotes:not(:checked) ~ .sheet-section-notes  {

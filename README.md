@@ -1,7 +1,7 @@
 # Roll20-Fellowship
 
 A custom roll20 character sheet for playing Fellowship by Jakob Randolph.
-This sheet is still under development. It currently supports most options used by members of the Fellowship and the Overlord Framework.
+This sheet is still under development. It currently supports most options used by members of the Fellowship and the three published Frameworks.
 
 To-do:
   Add new options for the Fellowship playbook.
@@ -9,15 +9,3 @@ To-do:
       This should include their individual names, which are incorporated into their roll macros.
     Review playbooks in Book 4 (Generiosity), and add what is currently not supported.
     Add an optional Fellowship Moves section, and convinient ways to track community Fellowships. 
-  Improve Overlord sheet.
-    Revise the Generals section. New sections are needed, and it should be compatable with the Empire's Leaders. Should include the following:
-      Name
-      Stats
-      Traits
-      Background, notes, and other free-form text with no direct mechanical effects
-    Update Overlord Bond section.
-  Add Map as a fluid resource. 
-  Add The Horizon Framework.
-  Add The Location playbook used by The Horizon.
-  Add The Empire Framework.
-    This should use a structure similar to the revised General section on the Overlord Framework sheet. 

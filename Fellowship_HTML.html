@@ -33,8 +33,7 @@ on("sheet:opened", function(eventInfo){
                 <option value="ship">Ship</option>
                 <option value="rebellion">Rebellion</option>
                 <option value="overlord">Overlord</option>
-                <option value="horizon">Horizon</option>
-                <option value="horizon">Location</option>
+                <option value="location">Location</option>
                 <option value="empire">Empire</option>
               </select>
         </div>
@@ -73,6 +72,10 @@ on("sheet:opened", function(eventInfo){
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display Crew</div>
                 <input type="checkbox" class="sheet-hasCrew" name="attr_hasCrew" value="1">
+            </div>
+            <div class="sheet-options-header">
+                <div class="sheet-section-name">Display Maps</div>
+                <input type="checkbox" class="sheet-hasMaps" name="attr_hasMaps" value="1">
             </div>
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display a Second People Move</div>
@@ -146,15 +149,8 @@ on("sheet:opened", function(eventInfo){
                 <div class="sheet-section-name">Display Forbidden Element</div>
                 <input type="checkbox" class="sheet-hasForbiddenElement" name="attr_hasForbiddenElement" value="1">
             </div>
-            
             <div class="sheet-options-header">
-                <div class="sheet-section-name">Hide Companion Section</div>
-                <input type="checkbox" class="sheet-hideCompanionSection" name="attr_hideCompanionSection" value="1">
-            </div>
-            
-            
-            <div class="sheet-options-header">
-                <div class="sheet-section-name">Display Elemental Master (Exile)</div>
+                <div class="sheet-section-name">Display Elemental Master</div>
                 <input type="checkbox" class="sheet-hasElementalMaster" name="attr_hasElementalMaster" value="1">
             </div>
             <!--
@@ -163,6 +159,10 @@ on("sheet:opened", function(eventInfo){
                 <input type="checkbox" class="sheet-hasArchmage" name="attr_hasArchmage" value="1">
             </div>
             -->
+            <div class="sheet-options-header">
+                <div class="sheet-section-name">Hide Companion Section</div>
+                <input type="checkbox" class="sheet-hideCompanionSection" name="attr_hideCompanionSection" value="1">
+            </div>
             <br> <br> <br>
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display Pair (WIP)</div>
@@ -213,6 +213,17 @@ on("sheet:opened", function(eventInfo){
             <div class="sheet-options-header">
                 <div class="sheet-section-name">Display Warmonger's Extra Army</div>
                 <input type="checkbox" class="sheet-hasWarmonger" name="attr_hasWarmonger" value="1">
+            </div>
+        </div>
+        <input type="hidden" class="sheet-sheetType" name="attr_SheetType">
+        <div class="sheet-empire">
+            <div class="sheet-options-header">
+                <div class="sheet-section-name">Display a Second Barracks</div>
+                <input type="checkbox" class="sheet-hasDiversifiedHorde1" name="attr_hasDiversifiedHorde1" value="1">
+            </div>
+            <div class="sheet-options-header">
+                <div class="sheet-section-name">Display a Third Barracks</div>
+                <input type="checkbox" class="sheet-hasDiversifiedHorde2" name="attr_hasDiversifiedHorde2" value="1">
             </div>
         </div>
     </div>
@@ -477,9 +488,9 @@ on("sheet:opened", function(eventInfo){
 
             <div class="sheet-row-1">
                 <div class="sheet-fluidnumber-box">
-                    <input type="number" name="attr_rain_max">
+                    <input type="number" name="attr_rain_current">
                     <span class="sheet-slash">/</span>	
-                    <input type="number" name="attr_rain_current" placeholder="MAX">
+                    <input type="number" name="attr_rain_max" placeholder="MAX">
                 </div>
             </div>
         </div>
@@ -492,9 +503,9 @@ on("sheet:opened", function(eventInfo){
 
             <div class="sheet-row-1">
                 <div class="sheet-fluidnumber-box">
-                    <input type="number" name="attr_crew_max">
+                    <input type="number" name="attr_crew_current">
                     <span class="sheet-slash">/</span>	
-                    <input type="number" name="attr_crew_current" placeholder="MAX">
+                    <input type="number" name="attr_crew_max" placeholder="MAX">
                 </div>
             </div>
         </div>
@@ -540,6 +551,21 @@ on("sheet:opened", function(eventInfo){
                     <input type="number" name="attr_fandom_current">
                     <span class="sheet-slash">/</span>	
                     <input type="number" name="attr_fandom_max" placeholder="3">
+                </div>
+            </div>
+        </div>
+
+        <!-- MAPS -->
+
+        <input type="checkbox" class="sheet-hasMaps" name="attr_hasMaps" value="1" style="display:none">
+        <div class="sheet-header sheet-maps">
+            <label class="sheet-top" for="attr_maps">Maps</label>
+
+            <div class="sheet-row-1">
+                <div class="sheet-fluidnumber-box">
+                    <input type="number" name="attr_maps_current">
+                    <span class="sheet-slash">/</span>	
+                    <input type="number" name="attr_maps_max" placeholder="2">
                 </div>
             </div>
         </div>
@@ -1752,9 +1778,49 @@ on("sheet:opened", function(eventInfo){
                 <div class="sheet-section-generalsbox">
                     <input type="text" name="attr_generalsname" placeholder="Your General's Name">
                     <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_general-show" value="1" />
-                    <div class="sheet-hide sheet-auto-expand">
-                        <span name="attr_generalbody"></span>
-                        <textarea name="attr_generalbody" placeholder="Information about this general"></textarea>
+                    <div class="sheet-hide sheet-general">
+                        <span>Number of stats: </span>
+                        <select class="sheet-generalStatAmount" name="attr_generalStatAmount" value="2">
+                            <option value="# of stats" style="display:none" selected># of Stats</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <div class="sheet-section-generalstats">
+                            <input type="hidden" class="sheet-generalStatAmount" name="attr_generalStatAmount">
+                            <div class="sheet-section-generalstat1" >
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat1-damaged" value="1" />
+                                <input name="attr_generalstat1" type="text" placeholder="Stat 1">
+                            </div>
+                            <input type="hidden" class="sheet-generalStatAmount" name="attr_generalStatAmount">
+                            <div class="sheet-section-generalstat2">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat2-damaged" value="1" />
+                                <input name="attr_generalstat2" type="text" placeholder="Stat 2">
+                            </div>
+                            <div class="sheet-section-generalstat3">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat3-damaged" value="1" />
+                                <input name="attr_generalstat3" type="text" placeholder="Stat 3">
+                            </div>
+                            <div class="sheet-section-generalstat4">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat4-damaged" value="1" />
+                                <input name="attr_generalstat4" type="text" placeholder="Stat 4">
+                            </div>
+                            <div class="sheet-section-generalstat5">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_generalstat5-damaged" value="1" />
+                                <input name="attr_generalstat5" type="text" placeholder="stat 5">
+                            </div>
+                            <div class="sheet-clearfix"></div>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_generaltraitbody"></span>
+                            <textarea name="attr_generaltraitbody" placeholder="The General's Traits"></textarea>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_generalbody"></span>
+                            <textarea name="attr_generalbody" placeholder="Information about this general"></textarea>
+                        </div>
                     </div>
                 </div>
             </fieldset>
@@ -1785,6 +1851,238 @@ on("sheet:opened", function(eventInfo){
     
     <br>
 </div>
+
+
+<!--    ====THE EMPIRE SHEET====  -->
+<div class="sheet-empire">    
+    <div class="sheet-col-left">
+        <!-- ===== AGENDAS ===== -->
+        <div class="sheet-header">
+            <div class="sheet-section-name">Agendas</div>
+        </div>
+        <div class="sheet-section-agendas">
+            <input type="text" name="attr_agenda1" placeholder="Create An Oppressive Atmosphere">
+            <br>
+            <input type="text" name="attr_agenda2" placeholder="Play To Find Out What Happens">
+            <br>
+            <input type="text" name="attr_agenda3" placeholder="Crush Rebellion"></input>
+        </div>
+    
+        <!-- ===== YOUR BARRACKS ===== -->
+        <div class="sheet-header">
+            <div class="sheet-section-name">Your Barracks</div>
+            <input type="checkbox" class="sheet-hideArmy" name="attr_hideArmy" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideArmy" name="attr_hideArmy" value="1" style="display:none">
+        <div class="sheet-section-army">
+            <input type="text" name="attr_army_name" placeholder="Who or what serves you?">
+            <br>
+            <textarea name="attr_army-desc" placeholder="Describe them"></textarea>
+            <br>
+            <input type="checkbox" class="sheet-hasDiversifiedHorde1" name="attr_hasDiversifiedHorde1" value="1" style="display:none">
+            <div class="sheet-diversifiedHorde1">
+                <br>
+                <input type="text" name="attr_army_name2" placeholder="Your Second army">
+                <br>
+                <textarea name="attr_army-desc2" placeholder="Describe your second army"></textarea>
+            </div>
+            <input type="checkbox" class="sheet-hasDiversifiedHorde2" name="attr_hasDiversifiedHorde2" value="1" style="display:none">
+            <div class="sheet-diversifiedHorde2">
+                <br>
+                <input type="text" name="attr_army_name3" placeholder="Your Third army">
+                <br>
+                <textarea name="attr_army-desc3" placeholder="Describe your third army"></textarea>
+            </div>
+        </div> 
+
+
+
+        <!-- BONDS/NOTORIETY -->
+
+        <div class="sheet-header">
+            <div class="sheet-section-name">Notoriety Bonds</div>
+            <input type="checkbox" class="sheet-hideBonds" name="attr_hideBonds" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideBonds" name="attr_hideBonds" value="1" style="display:none">
+        <div class="sheet-section-bonds">
+            <fieldset class="repeating_bonds">
+                <div class="sheet-section-bondsbox">
+                    <input name="attr_bondname" type="text" placeholder="Name">
+                    
+                        <!-- <fieldset class="repeating_companion-stats">
+                            <input type="checkbox" class="sheet-toggle"  name="attr_companion-stat-used" value="1" />
+                            <input name="attr_companionstat" type="text" placeholder="Stat">
+                            <div class="sheet-clearfix"></div>
+                        </fieldset> -->
+
+                    <select class="sheet-bondStatAmount" name="attr_bondAmount" value="2">
+                        <option value="# of stats" style="display:none" selected># of Bonds</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <br>
+                    <input type="hidden" class="sheet-bondAmount" name="attr_BondAmount">
+                    <div class="sheet-section-bond1" >
+                        <input name="attr_bond1" type="text" placeholder="Bond Description">
+                    </div>
+                    <input type="hidden" class="sheet-bondAmount" name="attr_BondAmount">
+                    <div class="sheet-section-bond2">
+                        <input name="attr_bond2" type="text" placeholder="Bond Description">
+                    </div>
+                    <div class="sheet-section-bond3">
+                        <input name="attr_bond3" type="text" placeholder="Bond Description">
+                    </div>
+                    <div class="sheet-section-bond4">
+                        <input name="attr_bond4" type="text" placeholder="Bond Description">
+                    </div>
+                    <div class="sheet-section-bond5">
+                        <input name="attr_bond5" type="text" placeholder="Bond Description">
+                    </div>
+                    <div class="sheet-clearfix"></div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="sheet-clearfix"></div>
+    
+    </div>
+
+        
+    <div class="sheet-col-right">
+        <!-- ===== PLANS ===== -->
+        <div class="sheet-header">
+            <div class="sheet-section-name">Your Plans</div>
+            <input type="checkbox" class="sheet-hidePlans" name="attr_hidePlans" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hidePlans" name="attr_hidePlans" value="1" style="display:none">
+        <div class="sheet-section-plans">
+            <fieldset class="repeating_plans">
+                <div class="sheet-section-plansbox">
+                    <select class="sheet-planPhase" name="attr_planPhase" value="1">
+                        <option value="phase" style="display: none">Phase</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <input type="text" name="attr_planname" placeholder="Master Plan Name">
+                    <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_plan-show" value="1" />
+                    <div class="sheet-show sheet-auto-expand">
+                        <span name="attr_planbody"></span>
+                        <textarea name="attr_planbody" placeholder="Plan Description"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+      <!-- ===== Leaders ===== -->
+
+        <div class="sheet-header">
+            <div class="sheet-section-name">Your Leaders</div>
+            <input type="checkbox" class="sheet-hideLeaders" name="attr_hideLeaders" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideLeaders" name="attr_hideLeaders" value="1" style="display:none">
+        <div class="sheet-section-leaders">
+            <fieldset class="repeating_leaders">
+                <div class="sheet-section-leadersbox">
+                    <input type="text" name="attr_leadersname" placeholder="Your Leader's Name">
+                    <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_leader-show" value="1" />
+                    <div class="sheet-hide sheet-leader">
+                        <span>Number of stats: </span>
+                        <select class="sheet-leaderStatAmount" name="attr_leaderStatAmount" value="2">
+                            <option value="# of stats" style="display:none" selected># of Stats</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <div class="sheet-section-leaderstats">
+                            <input type="hidden" class="sheet-leaderStatAmount" name="attr_leaderStatAmount">
+                            <div class="sheet-section-leaderstat1" >
+                                <input type="checkbox" class="sheet-toggle"  name="attr_leaderstat1-damaged" value="1" />
+                                <input name="attr_leaderstat1" type="text" placeholder="Stat 1">
+                            </div>
+                            <input type="hidden" class="sheet-leaderStatAmount" name="attr_leaderStatAmount">
+                            <div class="sheet-section-leaderstat2">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_leaderstat2-damaged" value="1" />
+                                <input name="attr_leaderstat2" type="text" placeholder="Stat 2">
+                            </div>
+                            <div class="sheet-section-leaderstat3">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_leaderstat3-damaged" value="1" />
+                                <input name="attr_leaderstat3" type="text" placeholder="Stat 3">
+                            </div>
+                            <div class="sheet-section-leaderstat4">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_leaderstat4-damaged" value="1" />
+                                <input name="attr_leaderstat4" type="text" placeholder="Stat 4">
+                            </div>
+                            <div class="sheet-section-leaderstat5">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_leaderstat5-damaged" value="1" />
+                                <input name="attr_leaderstat5" type="text" placeholder="stat 5">
+                            </div>
+                            <div class="sheet-clearfix"></div>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_leadertraitbody"></span>
+                            <textarea name="attr_leadertraitbody" placeholder="Leadership Moves & Traits"></textarea>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_leaderbody"></span>
+                            <textarea name="attr_leaderbody" placeholder="Information about this leader"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- ===== SOURCE OF POWER ===== -->
+
+        <div class="sheet-header">
+            <div class="sheet-section-name">Your Sources of Power</div>
+            <input type="checkbox" class="sheet-hideSourceOfPower" name="attr_hideSourceOfPower" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideSourceOfPower" name="attr_hideSourceOfPower" value="1" style="display:none">
+        <div class="sheet-section-sourceofpower">
+            <fieldset class="repeating_sourceofpower">
+                <div class="sheet-section-sourceofpowerbox">
+                    <input type="text" name="attr_sourceofpowername" placeholder="Your Source of Power">
+                    <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_sourceofpower-show" value="1" />
+                    <div class="sheet-hide sheet-sourceofpower">
+                        <div class="sheet-auto-expand">
+                            <span name="attr_locationdescription"></span>
+                            <textarea name="attr_locationdescription" placeholder="Describe where the source of power is located."></textarea>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_location-powermove"></span>
+                            <textarea name="attr_locationpowermove" placeholder="What Power Move is associated with this location?"></textarea>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_location-weakness"></span>
+                            <textarea name="attr_locationweakness" placeholder="What is the location's weakness?"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        
+
+    </div>
+
+    <div class="sheet-clearfix"></div>
+    
+    <br>
+
+
+</div>
+
+
+
+
+
 
 <!--    ====THE SHIP SHEET====   -->
 <div class="sheet-ship">
@@ -2136,6 +2434,260 @@ on("sheet:opened", function(eventInfo){
     <br>
 </div>
 
+<!--    ====THE LOCATIONS SHEET====   -->
+<div class="sheet-location">
+    
+
+    <div class="sheet-col-left">
+
+        <!-- ===== LOOK ===== -->
+        <div class="sheet-header">
+            <div class="sheet-section-name">Look</div>
+            <input type="checkbox" class="sheet-hideLook" name="attr_hideLook" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideLook" name="attr_hideLook" value="1" style="display:none">
+        <div class="sheet-section-look">
+            <input type="text" name="attr_look1" placeholder="Aesthetic Style">
+            <br>
+            <input type="text" name="attr_look2" placeholder="Natural Topography">
+            <br>
+            <input type="text" name="attr_look3" placeholder="General Vibe">
+            <br>
+            <input type="text" name="attr_look4" placeholder="Traversal Difficulty">
+        </div>
+
+        <!-- STATS -->
+
+        <div class="sheet-header">
+            <div class="sheet-section-name">Stats</div>
+        </div>
+        <div class="sheet-section-stats">
+            <div class="sheet-section-statbox">
+                <select class="sheet-stat-level-1" name="attr_stat-level-1">
+                    <option value=" 0" style="display:none" selected>&nbsp;0</option>
+                </select>
+                <input name="attr_stat-name-1" type="text" placeholder="Stat 1">
+                <br>
+
+                <select class="sheet-stat-level-2" name="attr_stat-level-2">
+                    <option value="Level for Stat" style="display:none" selected>Response Level for Stat 2</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <input name="attr_stat-name-2" type="text" placeholder="Stat 2">
+
+                <select class="sheet-stat-level-3" name="attr_stat-level-3">
+                    <option value="Level for Stat" style="display:none" selected>Response Level for Stat 3</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <input name="attr_stat-name-3" type="text" placeholder="Stat 3">
+
+                <select class="sheet-stat-level-4" name="attr_stat-level-4">
+                    <option value="Level for Stat" style="display:none" selected>Response Level for Stat 4</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <input name="attr_stat-name-4" type="text" placeholder="Stat 4">
+
+
+                
+                <div class="sheet-clearfix"></div>
+            </div>
+        </div>
+
+       <!-- RRESPONSE LEVEL -->
+        <div class="sheet-header">
+            <div class="sheet-section-name">Response Level: <input type="number" name="attr_level">
+            </div> 
+            <input type="checkbox" class="sheet-hideResponse" name="attr_hideResponse" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideResponse" name="attr_hideResponse" value="1" style="display:none">
+        <div class="sheet-section-responselevel">
+            <span>&nbsp;0:&nbsp;</span><input type="text" name="attr_responselevel0" placeholder="Response Level 0">
+            <br>
+            <span>&nbsp;1:&nbsp;</span><input type="text" name="attr_responselevel1" placeholder="Response Level 1">
+            <br>
+            <span>&nbsp;2:&nbsp;</span><input type="text" name="attr_responselevel2" placeholder="Response Level 2">
+            <br>
+            <span>&nbsp;3:&nbsp;</span><input type="text" name="attr_responselevel3" placeholder="Response Level 3">
+            <span> Locals can appear in Groups at Response Level 3+</span>
+            <br>
+            <span>&nbsp;4:&nbsp;</span><input type="text" name="attr_responselevel4" placeholder="Response Level 4">
+            <br>
+            <span>&nbsp;5:&nbsp;</span><input type="text" name="attr_responselevel5" placeholder="Response Level 5">
+            <br>
+            <span>&nbsp;6:&nbsp;</span><input type="text" name="attr_responselevel6" placeholder="Response Level 6">
+            <span>Locals can appear in Gangs at Response Level 6+</span>
+            <br>
+            <span>&nbsp;7:&nbsp;</span><input type="text" name="attr_responselevel7" placeholder="Response Level 7">
+            <br>
+            <span>&nbsp;8:&nbsp;</span><input type="text" name="attr_responselevel8" placeholder="Response Level 8">
+            <br>
+            <span>&nbsp;9:&nbsp;</span><input type="text" name="attr_responselevel9" placeholder="Response Level 9">
+            <span>Locals can appear in Armies at Response Level 9+</span>
+            <br>
+            <span>10:&nbsp;</span><input type="text" name="attr_responselevel10" placeholder="Response Level 10">
+        </div>
+
+        <div class="sheet-clearfix"></div>
+        </div>
+    <div class="sheet-col-right">
+ 
+
+        <div class="sheet-header">
+            <div class="sheet-section-name">The Boss</div>
+            <input type="checkbox" class="sheet-hideBoss" name="attr_hideBoss" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideBoss" name="attr_hideBoss" value="1" style="display:none">
+        <div class="sheet-section-boss">
+                    <input type="text" name="attr_bossname" placeholder="The Boss's Name">
+                    
+                        <span>Number of stats: </span>
+                        <select class="sheet-bossStatAmount" name="attr_bossStatAmount" value="2">
+                            <option value="# of stats" style="display:none" selected># of Stats</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <div class="sheet-section-bossstats">
+                            <input type="hidden" class="sheet-bossStatAmount" name="attr_bossStatAmount">
+                            <div class="sheet-section-bossstat1" >
+                                <input type="checkbox" class="sheet-toggle"  name="attr_bossstat1-damaged" value="1" />
+                                <input name="attr_bossstat1" type="text" placeholder="Stat 1">
+                            </div>
+                            <input type="hidden" class="sheet-bossStatAmount" name="attr_bossStatAmount">
+                            <div class="sheet-section-bossstat2">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_bossstat2-damaged" value="1" />
+                                <input name="attr_bossstat2" type="text" placeholder="Stat 2">
+                            </div>
+                            <div class="sheet-section-bossstat3">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_bossstat3-damaged" value="1" />
+                                <input name="attr_bossstat3" type="text" placeholder="Stat 3">
+                            </div>
+                            <div class="sheet-section-bossstat4">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_bossstat4-damaged" value="1" />
+                                <input name="attr_bossstat4" type="text" placeholder="Stat 4">
+                            </div>
+                            <div class="sheet-section-bossstat5">
+                                <input type="checkbox" class="sheet-toggle"  name="attr_bossstat5-damaged" value="1" />
+                                <input name="attr_bossstat5" type="text" placeholder="stat 5">
+                            </div>
+                            <div class="sheet-clearfix"></div>
+                        </div>
+                        <div class="sheet-auto-expand">
+                            <span name="attr_bossagenda"></span>
+                            <textarea name="attr_bossagenda" placeholder="The Boss's Agenda(s)"></textarea>
+                        </div>
+                        <span>The Boss is a Threat to the World.<br>You must pay a price when making a Move against them.</span>
+                    
+        </div>
+
+        <!-- THE LOCALS -->
+
+        <div class="sheet-header">
+            <div class="sheet-section-name">The Locals</div>
+            <input type="checkbox" class="sheet-hideLocals" name="attr_hideLocals" value="1">
+        </div>
+        <input type="checkbox" class="sheet-hideLocals" name="attr_hideLocals" value="1" style="display: none;">
+        <div class="sheet-section-locals">
+            <span>Locals Type: </span><input type="text" name="attr_localtype">
+            <fieldset class="repeating_stats">
+                <div class="sheet-section-statbox">
+                    <input name="attr_threatname" type="text" placeholder="Locals Stat Block">
+                    
+                        <!-- <fieldset class="repeating_companion-stats">
+                            <input type="checkbox" class="sheet-toggle"  name="attr_companion-stat-used" value="1" />
+                            <input name="attr_companionstat" type="text" placeholder="Stat">
+                            <div class="sheet-clearfix"></div>
+                        </fieldset> -->
+
+                    <select class="sheet-statAmount" name="attr_statAmount" value="2">
+                        <option value="# of stats" style="display:none" selected># of Stats</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <br>
+                    <input type="hidden" class="sheet-statAmount" name="attr_statAmount">
+                    <div class="sheet-section-stat1" >
+                        <input type="checkbox" class="sheet-toggle"  name="attr_stat1-used" value="1" />
+                        <input name="attr_stat1" type="text" placeholder="Stat">
+                    </div>
+                    <input type="hidden" class="sheet-statAmount" name="attr_statAmount">
+                    <div class="sheet-section-stat2">
+                        <input type="checkbox" class="sheet-toggle"  name="attr_stat2-used" value="2" />
+                        <input name="attr_stat2" type="text" placeholder="Stat">
+                    </div>
+                    <div class="sheet-section-stat3">
+                        <input type="checkbox" class="sheet-toggle"  name="attr_stat3-used" value="3" />
+                        <input name="attr_stat3" type="text" placeholder="Stat">
+                    </div>
+                    <div class="sheet-section-stat4">
+                        <input type="checkbox" class="sheet-toggle"  name="attr_stat4-used" value="4" />
+                        <input name="attr_stat4" type="text" placeholder="Stat">
+                    </div>
+                    <div class="sheet-section-stat5">
+                        <input type="checkbox" class="sheet-toggle"  name="attr_stat5-used" value="5" />
+                        <input name="attr_stat5" type="text" placeholder="Stat">
+                    </div>
+                    <div class="sheet-clearfix"></div>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- ===== SPECIAL MECHANICS ===== -->
+        <div class="sheet-header">
+            <div class="sheet-section-name">Special Mechanics</div>
+        </div>
+        <div class="sheet-section-moves">
+            <fieldset class="repeating_moves">
+                <div class="sheet-section-movebox">
+                    <button type="roll" name="roll_move-chat" class='sheet-move-chat-button' value="&{template:sharemove} {{movename=@{movename} }} {{movebody=@{movebody} }}"></button>
+                    <input type="text" name="attr_movename" placeholder="Move Name">
+                    <input type="checkbox" class="sheet-toggle" title="show/hide" name="attr_move-show" value="1" />
+                    <div class="sheet-hide sheet-auto-expand">
+                        <span name="attr_movebody"></span>
+                        <textarea name="attr_movebody" placeholder="Some Threats and Locations have special mechanics, such as trying to direct an Angry Mob. 
+This field lets you quickly share these mechanics with players."></textarea>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="sheet-clearfix"></div>
+    <br>
+</div>
 
 <!--    ====THE THREATS AND NPC SHEET====   -->
 <div class="sheet-threats">
